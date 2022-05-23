@@ -1,8 +1,6 @@
 import { React, useState, useEffect, Suspense, lazy } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Header from './components/header/Header';
-import About from "./pages/about/About";
 import Footer from './components/Footer/Footer';
 
 import './App.css';
@@ -27,8 +25,12 @@ function App() {
 
   useEffect(() => { //HOOK useEffect!
     getMeaning();
-  }, [data, searchWord]);  //DEPENDENCIAS / DEPENDENCIES / DEPENDENCY
+  }, [searchWord]);  //DEPENDENCIAS / DEPENDENCIES / DEPENDENCY
 
+  function playAudio() {
+    let audio = new Audio(data.phonetics[0].audio);
+    audio.play();
+  }
 
   return (
     <div className="App">
@@ -48,26 +50,35 @@ function App() {
       <div className="searchBox">
 
         <input
+          size="25"
           type="text"
-          placeholder="Search a word in English"
+          placeholder="Search a word in English..."
           onChange={(e) => {
-            setSearchWord(e.target.value);
-          }}
+            setSearchWord(e.target.value);}}
         />
-        <button
-          onClick={() => {
+{/*         <button
+          onClick={(e) => {
             getMeaning();
           }}
         >Click to search
-        </button>
+        </button> */}
       </div>
       <br />
       {data ? data && (
+
         <div>
 
           <h2>Word:&nbsp;
             {data.word}{" "}
+            <button
+              onClick={() => {
+                playAudio();
+              }}
+            > Hear it! </button>
           </h2>
+
+
+
           <div>Definition:       <p>{data.meanings[0].definitions[0].definition}  </p></div>
           <div>Synonym(s):       <p>{data.meanings[0].definitions[0].synonyms.map((s) => `${s}, `)} </p></div>
           <div>Antonym(s):       <p>{data.meanings[0].definitions[0].antonyms.map((s) => `${s}, `)} </p></div>
