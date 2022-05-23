@@ -74,7 +74,7 @@ function App() {
               onClick={() => {
                 playAudio();
               }}
-            > Hear it! </button>
+            > 🔈 </button>
           </h2>
 
 
