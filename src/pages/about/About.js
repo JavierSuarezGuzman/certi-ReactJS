@@ -2,7 +2,7 @@ import React from 'react';
 
 const About = () => {
     return (
-    <div>Esta es una web que se asignó cómo tarea en el curso de ReactJS generación 9 a la derecha las instrucciones:
+    <div>Esta es una web que se asignó cómo tarea de certificación en el curso de ReactJS generación 9, estas son las instrucciones:
         <br></br>
         <div>Instrucciones Certificación<br></br>
             DETALLE:<br></br>

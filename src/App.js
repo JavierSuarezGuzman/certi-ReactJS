@@ -1,12 +1,15 @@
-import { React, useState, useEffect } from "react";
+import { React, useState, useEffect, Suspense, lazy } from "react";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Header from './components/header/Header';
+import About from "./pages/about/About";
 import Footer from './components/Footer/Footer';
 
 import './App.css';
 
 function App() {
 
+  //api context + hooks
 
   const base_url = "https://api.dictionaryapi.dev/api/v2/entries/en";
   const [data, setData] = useState(""); //HOOK custom useState!
@@ -30,7 +33,18 @@ function App() {
   return (
     <div className="App">
 
-      <Header data={data} setData={setData} searchWord={searchWord} setSearchWord={setSearchWord} /> {/* PROPS! */}
+      <div>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/about">About certification</a>
+          </li>
+        </ul>
+        <h1>Free English Dictionary</h1>        </div>
+
+
       <div className="searchBox">
 
         <input
@@ -55,13 +69,14 @@ function App() {
             {data.word}{" "}
           </h2>
           <div>Definition:       <p>{data.meanings[0].definitions[0].definition}  </p></div>
-          <div>Synonym(s):          <p>{data.meanings[0].definitions[0].synonyms.map((s) => `${s}, `)} </p></div>
-          <div>Antonym(s):          <p>{data.meanings[0].definitions[0].antonyms.map((s) => `${s}, `)} </p></div>
+          <div>Synonym(s):       <p>{data.meanings[0].definitions[0].synonyms.map((s) => `${s}, `)} </p></div>
+          <div>Antonym(s):       <p>{data.meanings[0].definitions[0].antonyms.map((s) => `${s}, `)} </p></div>
 
         </div>
 
-      ) : "No words found yet" }
+      ) : "No words found yet"}
 
+      <Header data={data} setData={setData} searchWord={searchWord} setSearchWord={setSearchWord} /> {/* PROPS! */}
       <Footer />
     </div>
   );
