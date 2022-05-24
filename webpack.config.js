@@ -44,12 +44,11 @@ module.exports = {
   resolve: {
     extensions: [".js", ".jsx"],
   },
-  performance: {
+  performance: { //performance budgets assets para webpack
     hints: process.env.NODE_ENV === "production" ? "error" : false,
     maxEntrypointSize: 580000,
     maxAssetSize: 580000,
   },
-  //devtool development: "eval-cheap-module-source-map",
   devtool: "source-map",
   devServer: {
     proxy: {
