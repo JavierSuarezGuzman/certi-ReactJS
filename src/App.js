@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Suspense, lazy } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from './components/header/Header';
 import Footer from './components/Footer/Footer';
@@ -56,12 +56,6 @@ function App() {
           onChange={(e) => {
             setSearchWord(e.target.value);}}
         />
-{/*         <button
-          onClick={(e) => {
-            getMeaning();
-          }}
-        >Click to search
-        </button> */}
       </div>
       <br />
       {data ? data && (
@@ -76,8 +70,6 @@ function App() {
               }}
             > 🔈 </button>
           </h2>
-
-
 
           <div>Definition:       <p>{data.meanings[0].definitions[0].definition}  </p></div>
           <div>Synonym(s):       <p>{data.meanings[0].definitions[0].synonyms.map((s) => `${s}, `)} </p></div>

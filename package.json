@@ -30,8 +30,8 @@
     "webpack-dev-server": "4.5.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "webpack --mode=development",
+    "build": "webpack --mode=production",
     "dev-server": "webpack serve",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
