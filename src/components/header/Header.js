@@ -1,12 +1,11 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
-import { BrowserRouter, Router, Routes, Route, Switch, Link, Layout } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import './Header.css';
 
 import Loader from '../Loader/Loader';
-//import About from '../../pages/about/About'; 
 
-const About = React.lazy(() => import('../../pages/about/About')); //importanción de lazy
+const About = lazy(() => import('../../pages/about/About')); //importanción de lazy
 
 
 const Header = () => (
